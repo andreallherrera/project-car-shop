@@ -89,10 +89,13 @@ export default class CarController extends GenericController<Car> {
     res: Response<Car | ResponseError>,
   ): Promise<typeof res> => {
     const { id } = req.params;
+    if (id.length !== 24) {
+      return res.status(400).json({ error: this.errors.idLength });
+    }
     try {
       const car = await this.service.delete(id);
       return car
-        ? res.json(car)
+        ? res.status(204).json()
         : res.status(404).json({ error: this.errors.notFound });
     } catch (error) {
       return res.status(500).json({ error: this.errors.internal });
