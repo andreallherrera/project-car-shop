@@ -1,7 +1,7 @@
 // import CustomRouter from './routes/Router';
 // import App from './app';
 
-// import exampleController from './controllers/controller-example';
+// import carController from './controllers/controller-example';
 
 // import { example } from './interfaces/ExampleInterface';
 
