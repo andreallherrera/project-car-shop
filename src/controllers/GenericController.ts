@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import Service from '../services';
+import Service from '../services/GenericService';
 
 export type ResponseError = {
   error: unknown;
@@ -11,13 +11,13 @@ export interface RequestWithBody<T> extends Request {
 
 enum ControllerErrors {
   internal = 'Internal Server Error',
-  // internal = 'Id must have 24 hexadecimal characters',
   notFound = 'Object not found',
   requiredId = 'Id is required',
   badRequest = 'Bad request',
+  idLength = 'Id must have 24 hexadecimal characters',
 }
 
-abstract class Controller<T> {
+abstract class GenericController<T> {
   abstract route: string;
 
   protected errors = ControllerErrors;
@@ -56,4 +56,4 @@ abstract class Controller<T> {
     res: Response<T | ResponseError>
   ): Promise<typeof res>;
 }
-export default Controller;
+export default GenericController;

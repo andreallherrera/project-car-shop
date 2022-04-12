@@ -1,6 +1,6 @@
 import { Schema, model as createModel, Document } from 'mongoose';
 import { Car } from '../interfaces/CarInterface';
-import genericDAO from './genericDAO';
+import genericDAO from './GenericDAO';
 
 interface CarDocument extends Car, Document { }
 
