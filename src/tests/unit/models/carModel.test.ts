@@ -9,7 +9,7 @@ describe('CarModel', () => {
     before(() => Sinon.stub(carModel.model, 'create').resolves(carMock.car));
     after(() => Sinon.restore());
 
-    it('must return an object', async () => {
+    it('must return the car created', async () => {
       const car = await carModel.create(carMock.params);
       expect(car).to.deep.eq(carMock.car);
     });
@@ -86,7 +86,7 @@ describe('CarModel', () => {
       before(() => Sinon.stub(carModel.model, 'findByIdAndDelete').resolves(carMock.car as any));
       after(() => Sinon.restore());
   
-      it('must return the updated car', async () => {
+      it('must return the deleted car', async () => {
         const car = await carModel.delete(carMock.car._id);
         expect(car).to.deep.eq(carMock.car);
       });
