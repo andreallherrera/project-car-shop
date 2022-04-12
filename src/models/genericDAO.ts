@@ -2,7 +2,7 @@ import { Model as M, Document } from 'mongoose';
 import { Model } from '../interfaces/ModelInterface';
 
 export default abstract class GenericDAO<T> implements Model<T> {
-  constructor(protected model: M<T & Document>) { }
+  constructor(public model: M<T & Document>) { }
 
   create = async (obj: T): Promise<T> => this.model.create({ ...obj });
 
