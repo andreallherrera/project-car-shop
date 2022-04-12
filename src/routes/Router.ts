@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import Controller from '../controllers';
+import GenericController from '../controllers/GenericController';
 
 class CustomRouter<T> {
   public router: Router;
@@ -9,12 +9,13 @@ class CustomRouter<T> {
   }
 
   public addRoute(
-    controller: Controller<T>,
+    controller: GenericController<T>,
     route: string = controller.route,
   ) {
     this.router.post(route, controller.create);
     this.router.get(route, controller.read);
     this.router.get(`${route}/:id`, controller.readOne);
+    this.router.put(`${route}/:id`, controller.update);
   }
 }
 

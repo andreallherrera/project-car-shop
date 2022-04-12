@@ -1,17 +1,15 @@
 import { Request, Response } from 'express';
-import Controller, { RequestWithBody, ResponseError } from '.';
+import GenericController, 
+{ RequestWithBody, ResponseError } from './GenericController';
 import CarService from '../services/CarService';
 import { Car } from '../interfaces/CarInterface';
 
-export default class CarController extends Controller<Car> {
-  private $route: string;
-
+export default class CarController extends GenericController<Car> {
   constructor(
+    private $route: string = '/cars',
     service = new CarService(),
-    route = '/cars',
   ) {
     super(service);
-    this.$route = route;
   }
 
   get route() { return this.$route; }
@@ -42,8 +40,7 @@ export default class CarController extends Controller<Car> {
     const { id } = req.params;
     try {
       if (id.length !== 24) {
-        return res.status(400)
-          .json({ error: 'Id must have 24 hexadecimal characters' });
+        return res.status(400).json({ error: this.errors.idLength });
       }
       const car = await this.service.readOne(id);
       return car
@@ -69,14 +66,18 @@ export default class CarController extends Controller<Car> {
   };
 
   update = async (
-    req: Request<{ id: string, obj: Car }>,
+    req: Request<{ id: string }>,
     res: Response<Car | ResponseError>,
   ): Promise<typeof res> => {
-    const { id, obj } = req.params;
+    const { id } = req.params;
+    const { body } = req;
+    if (id.length !== 24) {
+      return res.status(400).json({ error: this.errors.idLength });
+    }
     try {
-      const car = await this.service.update(id, obj);
+      const car = await this.service.update(id, body);
       return car
-        ? res.json(car)
+        ? res.json({ id, ...body })
         : res.status(404).json({ error: this.errors.notFound });
     } catch (error) {
       return res.status(500).json({ error: this.errors.internal });
