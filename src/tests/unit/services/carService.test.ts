@@ -14,6 +14,11 @@ describe('CarService', () => {
       const car = await carService.create(carMock.params);
       expect(car).to.be.deep.eq(carMock.car);
     });
+
+    it('must return an error when the fields are invalid', async () => {
+      const car = await carService.create(carMock.invalid);
+      expect(car).to.haveOwnProperty('error');
+    });
   });
 
   describe('#read', () => {
