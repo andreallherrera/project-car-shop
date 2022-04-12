@@ -11,6 +11,7 @@ export interface RequestWithBody<T> extends Request {
 
 enum ControllerErrors {
   internal = 'Internal Server Error',
+  // internal = 'Id must have 24 hexadecimal characters',
   notFound = 'Object not found',
   requiredId = 'Id is required',
   badRequest = 'Bad request',
