@@ -12,7 +12,7 @@ const CarSchema = new Schema<CarDocument>({
   buyValue: Number,
   seatsQty: Number,
   doorsQty: Number,
-});
+}, { versionKey: false });
 
 class CarModel extends genericDAO<Car> {
   constructor(model = createModel('Cars', CarSchema)) {

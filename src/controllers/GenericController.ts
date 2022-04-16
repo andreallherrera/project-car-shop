@@ -22,24 +22,17 @@ abstract class GenericController<T> {
 
   protected errors = ControllerErrors;
 
-  constructor(protected service: Service<T>) { }
+  constructor(public service: Service<T>) { }
 
   abstract create(
     req: RequestWithBody<T>,
     res: Response<T | ResponseError>,
   ): Promise<typeof res>;
 
-  read = async (
+  abstract read(
     _req: Request,
     res: Response<T[] | ResponseError>,
-  ): Promise<typeof res> => {
-    try {
-      const objs = await this.service.read();
-      return res.json(objs);
-    } catch (err) {
-      return res.status(500).json({ error: this.errors.internal });
-    }
-  };
+  ): Promise<typeof res>;
 
   abstract readOne(
     req: Request<{ id: string; }>,
