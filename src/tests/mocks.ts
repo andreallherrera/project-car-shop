@@ -51,6 +51,23 @@ const carMock = {
     buyValue: 40000,
     seatsQty: 6,
     doorsQty: 4,
+  },
+  zodError: {
+    error: {
+      issues: [
+        {
+          code: 'too_small',
+          minimum: 3,
+          type: 'string',
+          inclusive: true,
+          message: 'model must have more than 3 characters',
+          path: [
+            'model'
+          ]
+        }
+      ],
+      name: 'ZodError'
+    }
   }
 }
 
