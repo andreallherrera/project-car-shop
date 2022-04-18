@@ -1,7 +1,8 @@
 import { expect } from 'chai';
 import Sinon from 'sinon';
+import { Car } from '../../../interfaces/CarInterface';
 import CarService from '../../../services/CarService';
-import carMock from '../../mocks';
+import carMock from '../../mocks/carMock';
 
 describe('CarService', () => {
   let carService = new CarService();
@@ -22,7 +23,7 @@ describe('CarService', () => {
   });
 
   describe('#read', () => {
-    before(() => Sinon.stub(carService.model, 'read').resolves(carMock.list as any));
+    before(() => Sinon.stub(carService.model, 'read').resolves(carMock.list as Car[]));
     after(() => Sinon.restore());
   
     it('must return a Car list', async () => {
@@ -32,7 +33,7 @@ describe('CarService', () => {
   });
 
   describe('#readOne', () => {
-    before(() => Sinon.stub(carService.model, 'readOne').resolves(carMock.car as any));
+    before(() => Sinon.stub(carService.model, 'readOne').resolves(carMock.car as Car));
     after(() => Sinon.restore());
   
     it('must return a specific car', async () => {
@@ -42,7 +43,7 @@ describe('CarService', () => {
   });
 
   describe('#update', () => {
-    before(() => Sinon.stub(carService.model, 'update').resolves(carMock.updated as any));
+    before(() => Sinon.stub(carService.model, 'update').resolves(carMock.updated as Car));
     after(() => Sinon.restore());
 
     it('must return the updated car', async () => {
@@ -53,7 +54,7 @@ describe('CarService', () => {
 
   describe('#delete', () => {
     describe('when the carId exists', () => { 
-      before(() => Sinon.stub(carService.model, 'delete').resolves(carMock.car as any));
+      before(() => Sinon.stub(carService.model, 'delete').resolves(carMock.car as Car));
       after(() => Sinon.restore());
   
       it('must return the deleted car', async () => {

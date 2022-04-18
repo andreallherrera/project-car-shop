@@ -1,5 +1,5 @@
 import Sinon from 'sinon';
-import carMock from '../../mocks';
+import carMock from '../../mocks/carMock';
 import CarController from '../../../controllers/CarController';
 import { Response, Request } from 'express';
 import { expect } from 'chai';

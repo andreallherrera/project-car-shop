@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import Sinon from 'sinon';
 import CarModel from '../../../models/CarModel';
-import carMock from '../../mocks';
+import carMock from '../../mocks/carMock';
 
 describe('CarModel', () => {
   let carModel = new CarModel();
