@@ -4,7 +4,7 @@ import { Motorcycle } from '../../../interfaces/MotorcycleInterface';
 import MotorcycleService from '../../../services/MotorcycleService';
 import motoMock from '../../mocks/motorcycleMock';
 
-describe.only('MotorcycleService', () => {
+describe('MotorcycleService', () => {
   let motorcycleService = new MotorcycleService();
 
   describe('#create', () => {

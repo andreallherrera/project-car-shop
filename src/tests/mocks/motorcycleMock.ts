@@ -51,6 +51,22 @@ const motoMock = {
       buyValue: 3500,
       category: 'Street',
       engineCapacity: 125
+  },
+  zodError: {
+    error: {
+      issues: [
+          {
+              code: 'invalid_type',
+              expected: 'number',
+              received: undefined,
+              path: [
+                  'year'
+              ],
+              message: 'year is required'
+          }
+      ],
+      name: 'ZodError'
+  }
   }
 }
 
