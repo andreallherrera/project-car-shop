@@ -9,7 +9,7 @@ export default abstract class GenericDAO<T> implements Model<T> {
   read = async (): Promise<T[]> => this.model.find();
 
   readOne = async (id: string): Promise<T | null> =>
-    this.model.findOne({ _id: id }, { __v: 0 });
+    this.model.findOne({ _id: id });
 
   update = async (id: string, obj: T): Promise<T | null> =>
     this.model.findByIdAndUpdate({ _id: id }, obj);
