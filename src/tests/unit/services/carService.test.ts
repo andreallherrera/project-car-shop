@@ -50,6 +50,11 @@ describe('CarService', () => {
       const car = await carService.update(carMock.car._id, carMock.updated);
       expect(car).to.deep.eq(carMock.updated);
     });
+
+    it('must return an error when the fields are invalid', async () => {
+      const car = await carService.update(carMock.car._id, carMock.invalid);
+      expect(car).to.haveOwnProperty('error');
+    });
   });
 
   describe('#delete', () => {
