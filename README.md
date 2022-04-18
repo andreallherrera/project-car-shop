@@ -1,73 +1,4 @@
-## Termos e acordos
-
-Ao iniciar este projeto, você concorda com as diretrizes do Código de Ética e Conduta e do Manual da Pessoa Estudante da Trybe.
-
-# Boas vindas ao repositório do projeto Car Shop!
-
-Você já usa o _GitHub_ diariamente para desenvolver os exercícios, certo? Agora, para desenvolver os projetos, você deverá seguir as instruções a seguir. Tenha atenção a cada passo, e se tiver qualquer dúvida, nos envie por Slack! #vqv 🚀
-
-Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu projeto a partir deste repositório, utilizando uma branch específica e um _Pull Request_ para colocar seus códigos.
-
----
-
-# Sumário
-
-- [Boas vindas ao repositório do projeto Car Shop!](#boas-vindas-ao-repositório-do-projeto-car-shop)
-- [Sumário](#sumário)
-- [Habilidades](#habilidades)
-- [Entregáveis](#entregáveis)
-  - [O que deverá ser desenvolvido](#o-que-deverá-ser-desenvolvido)
-  - [Data de Entrega](#data-de-entrega)
-- [Instruções para entregar seu projeto](#instruções-para-entregar-seu-projeto)
-  - [Antes de começar a desenvolver](#antes-de-começar-a-desenvolver)
-  - [Durante o desenvolvimento](#durante-o-desenvolvimento)
-- [Como desenvolver](#como-desenvolver)
-  - [Subir o banco do MongoDB usando Docker](#subir-o-banco-do-mongodb-usando-docker)
-  - [Linter](#linter)
-  - [Testes](#testes)
-    - [Dica: desativando testes](#dica-desativando-testes)
-    - [Atenção à estrutura das pastas dentro de `src`](#atenção-à-estrutura-das-pastas-dentro-de-src)
-    - [Arquivos prontos para uso](#arquivos-prontos-para-uso)
-  - [Arquivos de exemplo](#arquivos-de-exemplo)
-  - [**🔥⚠️ Muita atenção à próxima instrução ⚠️🔥**](#️-muita-atenção-à-próxima-instrução-️)
-- [Requisitos do projeto](#requisitos-do-projeto)
-  - [Requisitos Obrigatórios](#requisitos-obrigatórios)
-    - [01 - Crie a interface `Model` genérica](#01---crie-a-interface-model-genérica)
-    - [02 - Crie a interface `Vehicle`](#02---crie-a-interface-vehicle)
-    - [03 - Crie a interface `Car` a partir da interface `Vehicle`](#03---crie-a-interface-car-a-partir-da-interface-vehicle)
-    - [04 - Crie uma rota para o endpoint `/cars` onde seja possível cadastrar um novo carro](#04---crie-uma-rota-para-o-endpoint-cars-onde-seja-possível-cadastrar-um-novo-carro)
-    - [05 - Escreva testes para cobrir 15% da camada de model](#05---escreva-testes-para-cobrir-15-da-camada-de-model)
-    - [06 - Escreva testes para cobrir 15% da camada de service](#06---escreva-testes-para-cobrir-15-da-camada-de-service)
-    - [07 - Escreva testes para cobrir 15% da camada de controller](#07---escreva-testes-para-cobrir-15-da-camada-de-controller)
-    - [08 - Crie uma rota para o endpoint `/cars` onde seja possível listar todos os carros registrados](#08---crie-uma-rota-para-o-endpoint-cars-onde-seja-possível-listar-todos-os-carros-registrados)
-    - [09 - Crie uma rota para o endpoint `/cars/id` onde seja possível listar um único carro através do seu id](#09---crie-uma-rota-para-o-endpoint-carsid-onde-seja-possível-listar-um-único-carro-através-do-seu-id)
-    - [10 - Escreva testes para cobrir 30% da camada de model](#10---escreva-testes-para-cobrir-30-da-camada-de-model)
-    - [11 - Escreva testes para cobrir 30% da camada de service](#11---escreva-testes-para-cobrir-30-da-camada-de-service)
-    - [12 - Escreva testes para cobrir 30% da camada de controller](#12---escreva-testes-para-cobrir-30-da-camada-de-controller)
-    - [13 - Crie uma rota para o endpoint `/cars/id`, onde é possível atualizar o registro de um carro através do seu id](#13---crie-uma-rota-para-o-endpoint-carsid-onde-é-possível-atualizar-o-registro-de-um-carro-através-do-seu-id)
-    - [14 - Escreva testes para cobrir 60% da camada de model](#14---escreva-testes-para-cobrir-60-da-camada-de-model)
-    - [15 - Escreva testes para cobrir 60% da camada de service](#15---escreva-testes-para-cobrir-60-da-camada-de-service)
-    - [16 - Escreva testes para cobrir 60% da camada de controller](#16---escreva-testes-para-cobrir-60-da-camada-de-controller)
-    - [17 - Crie uma rota para o endpoint `/cars/id` para excluir os registros de um carro](#17---crie-uma-rota-para-o-endpoint-carsid-para-excluir-os-registros-de-um-carro)
-  - [Requisitos Bônus](#requisitos-bônus)
-    - [18 - Crie a interface `Motorcycle` a partir da interface `Vehicle`](#18---crie-a-interface-motorcycle-a-partir-da-interface-vehicle)
-    - [19 - Crie uma rota para o endpoint `/motorcycles` onde seja possível cadastrar uma nova moto](#19---crie-uma-rota-para-o-endpoint-motorcycles-onde-seja-possível-cadastrar-uma-nova-moto)
-    - [20 - Crie uma rota para o endpoint `/motorcycles` onde seja possível listar todas as motos registradas](#20---crie-uma-rota-para-o-endpoint-motorcycles-onde-seja-possível-listar-todas-as-motos-registradas)
-    - [21 - Crie uma rota para o endpoint `/motorcycles/id` onde seja possível listar uma única moto através do seu id](#21---crie-uma-rota-para-o-endpoint-motorcyclesid-onde-seja-possível-listar-uma-única-moto-através-do-seu-id)
-    - [22 - Crie uma rota para o endpoint `/motorcycles/id`, onde é possível atualizar o registro de uma moto através do seu id](#22---crie-uma-rota-para-o-endpoint-motorcyclesid-onde-é-possível-atualizar-o-registro-de-uma-moto-através-do-seu-id)
-    - [23 - Crie uma rota para o endpoint `/motorcycles/id` para excluir os registros de uma moto](#23---crie-uma-rota-para-o-endpoint-motorcyclesid-para-excluir-os-registros-de-uma-moto)
-    - [24 - Escreva testes para cobrir 90% da camada de model](#24---escreva-testes-para-cobrir-90-da-camada-de-model)
-    - [25 - Escreva testes para cobrir 90% da camada de service](#25---escreva-testes-para-cobrir-90-da-camada-de-service)
-    - [26 - Escreva testes para cobrir 90% da camada de controller](#26---escreva-testes-para-cobrir-90-da-camada-de-controller)
-  - [Requisitos não avaliativos](#requisitos-não-avaliativos)
-    - [27 - Escreva testes para cobrir 100% da camada de model](#27---escreva-testes-para-cobrir-100-da-camada-de-model)
-    - [28 - Escreva testes para cobrir 100% da camada de service](#28---escreva-testes-para-cobrir-100-da-camada-de-service)
-    - [29 - Escreva testes para cobrir 100% da camada de controller](#29---escreva-testes-para-cobrir-100-da-camada-de-controller)
-  - [Depois de terminar o desenvolvimento (opcional)](#depois-de-terminar-o-desenvolvimento-opcional)
-- [Revisando um pull request](#revisando-um-pull-request)
-- [Avisos finais](#avisos-finais)
-
----
+<!-- # CAR SHOP
 
 # Habilidades
 
@@ -605,4 +536,43 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
 
 Link: [FORMULÁRIO DE AVALIAÇÃO DE PROJETO](https://be-trybe.typeform.com/to/ZTeR4IbH)
 
-O avaliador automático não necessariamente avalia seu projeto na ordem em que os requisitos aparecem no _README_. Isso acontece para deixar o processo de avaliação mais rápido. Então, não se assuste se isso acontecer, ok?
+O avaliador automático não necessariamente avalia seu projeto na ordem em que os requisitos aparecem no _README_. Isso acontece para deixar o processo de avaliação mais rápido. Então, não se assuste se isso acontecer, ok? -->
+
+# CAR SHOP
+
+## Description
+This is an API that allows to create, read, update and delete (CRUD) cars and motorcycles from a database in MongoDB.
+The project has unit and integration tests.
+
+## Tools 
+* TypeScript/ JavaScript
+* NodeJS
+* Express/ Router
+* MongoDB/ Mongoose
+* Mocha/ Chai/ Sinon
+* Object-oriented programming (OOP)
+
+## Install 
+Install all the dependencies
+- `npm install`
+
+You will need MongoDB for debugging this project, in case you don't have it on your CP I recommend you to follow this 2 steps in order to use MongoDB with Docker:
+  * Download the MongoDB image: 
+  - `docker pull mongo`
+  * Create a container 
+  - `docker run --name <a-name-you-want> -p 27017:27017 -d mongo`
+
+## Endpoints
+#### Cars
+* POST /cars
+* GET /cars
+* GET /cars/:id
+* PUT /cars/:id
+* DELETE /cars/:id
+
+#### Motorcycle
+* POST /motorcycle
+* GET /motorcycle
+* GET /motorcycle/:id
+* PUT /motorcycle/:id
+* DELETE /motorcycle/:id
