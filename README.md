@@ -16,7 +16,7 @@ The project has unit and integration tests.
 Install all the dependencies
  `npm install`
 
-You will need MongoDB for debugging this project, in case you don't have it on your CP I recommend you to follow this 2 steps in order to use MongoDB with Docker:
+You will need MongoDB for debugging this project, in case you don't have it on your PC I recommend you to follow this 2 steps in order to use MongoDB with Docker:
   * Download the MongoDB image: 
     `docker pull mongo`
   * Create a container:
